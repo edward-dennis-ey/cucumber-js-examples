@@ -1,5 +1,5 @@
 import { Given, When, Then, After, Status } from "@cucumber/cucumber";
-import { Builder, By, Capabilities, Key } from "selenium-webdriver";
+import { Builder, By, Capabilities, Key, WebDriver } from "selenium-webdriver";
 import expect from "chai";
 import "chromedriver";
 
@@ -69,5 +69,9 @@ After(function (testCase) {
   }
   if(testCase.result.status === Status.FAILED){
     console.log("You are a failure!")
+    const world = this
+    return driver.takeScreenshot().then(function(screenShot){
+      world.attach(screenShot, 'base64:image/png');
+    })
   }
 });

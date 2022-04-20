@@ -2,5 +2,5 @@ Feature: Income Section
 
     Scenario: Starting the Income Section
         Given I am on the application welcome page
-        When I click on "Your income"
+        When I click on "Your income man "
         Then the first h1 element should be "Now, let's talk about your income"
