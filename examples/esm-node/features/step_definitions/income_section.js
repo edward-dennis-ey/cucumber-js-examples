@@ -1,7 +1,8 @@
-import { Given, When, Then, AfterAll } from "@cucumber/cucumber";
-import { Builder, By, Capabilities, Key } from "selenium-webdriver";
+import { Given, When, Then, After, Status } from "@cucumber/cucumber";
+import { Builder, By, Capabilities, Key, WebDriver } from "selenium-webdriver";
 import expect from "chai";
 import "chromedriver";
+
 
 // driver setup
 const capabilities = Capabilities.chrome();
@@ -18,12 +19,20 @@ When("I search for {string}", async function (searchTerm) {
   element.submit();
 });
 
-When("I click on {string}", async function (elementName) {
-  //   const { elementName, className } = htmlSelectors;
-  //   console.log(elementName, className)
-  const element = await driver.findElement(
-    By.xpath(`//*[@id="select-menu-items"]/li[4]/a`)
-  );
+When("I click on {string}", async function(elementText){
+  
+  const chosenElement = await driver.findElement(By.xpath(`//*[text() = "${elementText}"]`));
+ 
+
+   chosenElement.click()
+})
+
+When("I click on the element linking to {string}", async function (url) {
+ 
+  //find element by link addresss, not by text - text is very nested
+
+  const element = driver.findElement(By.xpath('//a[@href="'+`${url}` + '"]'))
+
   element.click();
 });
 
@@ -50,3 +59,19 @@ Then(
     expect(isTitleStartWithCheese).to.equal(true);
   }
 );
+
+
+After(function (testCase) {
+  // Assuming this.driver is a selenium webdriver
+  console.log("That's numberwang!")
+  if(testCase.result.status === Status.PASSED){
+    console.log("Well done! You passed!")
+  }
+  if(testCase.result.status === Status.FAILED){
+    console.log("You are a failure!")
+    const world = this
+    return driver.takeScreenshot().then(function(screenShot){
+      world.attach(screenShot, 'base64:image/png');
+    })
+  }
+});
