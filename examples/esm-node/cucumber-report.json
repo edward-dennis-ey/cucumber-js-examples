@@ -1,0 +1,71 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "income-section;starting-the-income-section",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Starting the Income Section",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I am on the application welcome page",
+            "match": {
+              "location": "file:\\C:\\cucumbering\\cucumber-js-examples\\examples\\esm-node\\features\\step_definitions\\income_section.js:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3795587600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "I click on \"Your income\"",
+            "match": {
+              "location": "file:\\C:\\cucumbering\\cucumber-js-examples\\examples\\esm-node\\features\\step_definitions\\income_section.js:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 24030500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "the first h1 element should be \"Now, let's talk about your income\"",
+            "match": {
+              "location": "file:\\C:\\cucumbering\\cucumber-js-examples\\examples\\esm-node\\features\\step_definitions\\income_section.js:39"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 984399
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2353499
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "income-section",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Income Section",
+    "tags": [],
+    "uri": "features\\income_section.feature"
+  }
+]
