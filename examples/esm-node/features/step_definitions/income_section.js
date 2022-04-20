@@ -1,7 +1,8 @@
-import { Given, When, Then, AfterAll } from "@cucumber/cucumber";
+import { Given, When, Then, After, Status } from "@cucumber/cucumber";
 import { Builder, By, Capabilities, Key } from "selenium-webdriver";
 import expect from "chai";
 import "chromedriver";
+
 
 // driver setup
 const capabilities = Capabilities.chrome();
@@ -58,3 +59,15 @@ Then(
     expect(isTitleStartWithCheese).to.equal(true);
   }
 );
+
+
+After(function (testCase) {
+  // Assuming this.driver is a selenium webdriver
+  console.log("That's numberwang!")
+  if(testCase.result.status === Status.PASSED){
+    console.log("Well done! You passed!")
+  }
+  if(testCase.result.status === Status.FAILED){
+    console.log("You are a failure!")
+  }
+});
