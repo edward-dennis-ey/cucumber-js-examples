@@ -18,12 +18,20 @@ When("I search for {string}", async function (searchTerm) {
   element.submit();
 });
 
-When("I click on {string}", async function (elementName) {
-  //   const { elementName, className } = htmlSelectors;
-  //   console.log(elementName, className)
-  const element = await driver.findElement(
-    By.xpath(`//*[@id="select-menu-items"]/li[4]/a`)
-  );
+When("I click on {string}", async function(elementText){
+  
+  const chosenElement = await driver.findElement(By.xpath(`//*[text() = "${elementText}"]`));
+ 
+
+   chosenElement.click()
+})
+
+When("I click on the element linking to {string}", async function (url) {
+ 
+  //find element by link addresss, not by text - text is very nested
+
+  const element = driver.findElement(By.xpath('//a[@href="'+`${url}` + '"]'))
+
   element.click();
 });
 
